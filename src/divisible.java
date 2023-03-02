@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class App {
+public class divisible {
     public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
         int n1, n2;
