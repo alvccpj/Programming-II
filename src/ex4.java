@@ -2,29 +2,12 @@ import java.util.Scanner;
 
 public class ex4 {
     public static void main(String[] args) {
-        int array[] = new int[10];
-        int maiorNumero = buscaMaior(array);
-
-        System.out.println("A posição do maior elemento é de índice " + maiorNumero);
-
-    }
-
-    public static int buscaMaior(int array[]) {
-        Scanner in = new Scanner(System.in);
-        int maior = 0;
+        double array[] = { 1.4, 2.2, 3.7, 4.6, 5.1, 6.1, 7.9, 8.3, 9.1, 10.4 };
 
         for (int i = 0; i < array.length; i++) {
-            System.out.print("Informe o elemento de índice " + i + ": ");
-            array[i] = in.nextInt();
-        }
-
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > array[maior]) {
-                maior = i;
+            if (i % 2 != 0) {
+                System.out.println(array[i]);
             }
         }
-
-        return maior;
     }
-
 }
