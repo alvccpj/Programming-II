@@ -8,7 +8,7 @@ public class ex5 {
     public static void function (int array [], int tamanho) {
         for (tamanho = 0; tamanho < array.length; tamanho++) {
             if (array[tamanho] % 2 == 0) {
-                System.out.println(array[tamanho]);
+                System.out.println(array[tamanho]); 
             }
         }
     }
