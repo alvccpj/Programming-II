@@ -2,29 +2,26 @@ import java.util.Scanner;
 
 public class ex1 {
     public static void main(String[] args) {
-        int array[] = new int[10];
-        int maiorNumero = buscaMaior(array);
-
-        System.out.println("A posição do maior elemento é de índice " + maiorNumero);
-
-    }
-
-    public static int buscaMaior(int array[]) {
         Scanner in = new Scanner(System.in);
-        int maior = 0;
+        int array[] = new int[10];
+        int maiorValor;
+        int maiorIndice = 0;
 
         for (int i = 0; i < array.length; i++) {
-            System.out.print("Informe o elemento de índice " + i + ": ");
+            System.out.print("Informe o valor de indice " + i + ": ");
             array[i] = in.nextInt();
         }
 
+        maiorValor = array[0];
+
         for (int i = 0; i < array.length; i++) {
-            if (array[i] > array[maior]) {
-                maior = i;
+            if (array[i] >= maiorValor) {
+                maiorValor = array[i];
+                maiorIndice = i;
             }
         }
 
-        return maior;
+        System.out.println("O maior valor é: " + maiorValor);
+        System.out.println("O maior indice é: " + maiorIndice);
     }
-
 }
