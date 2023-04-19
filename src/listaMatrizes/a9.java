@@ -1,4 +1,5 @@
-public class ex9 {
+package listaMatrizes;
+public class a9 {
     public static void main(String[] args) {
 
         // Cria e inicializa a matriz

@@ -1,4 +1,5 @@
-public class ex2 {
+package listaMatrizes;
+public class a2 {
     public static void main(String[] args) {
         // Define as dimensões das matrizes
         int m1 = 2;

@@ -1,4 +1,5 @@
-public class ex7 {
+package listaMatrizes;
+public class a7 {
     public static void main(String[] args) {
 
         // Cria e inicializa a matriz

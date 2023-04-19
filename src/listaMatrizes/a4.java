@@ -1,4 +1,5 @@
-public class ex4 {
+package listaMatrizes;
+public class a4 {
     public static void main(String[] args) {
         // Cria a matriz e inicializa com alguns valores
         int[][] matriz = { { 1, 0, 0 },

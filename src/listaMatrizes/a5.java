@@ -1,6 +1,6 @@
+package listaMatrizes;
 import java.util.Scanner;
-
-public class ex5 {
+public class a5 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 

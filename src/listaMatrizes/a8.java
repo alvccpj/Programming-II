@@ -1,4 +1,5 @@
-public class ex8 {
+package listaMatrizes;
+public class a8 {
     public static void main(String[] args) {
 
         // Cria e inicializa a matriz
