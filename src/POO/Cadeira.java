@@ -1,12 +1,18 @@
 package POO;
 public class Cadeira {
-    String cor, tipoDeMaterial;
-    double altura, largura, comprimento;
+    String cor;
+    double tamanho;
     boolean temRodinha;
 
+    Cadeira (String c, double tam, boolean tem) {
+        this.cor = c;
+        this.tamanho = tam;
+        this.temRodinha = tem;
+    }
+
     void moverSe() {
-        if (temRodinha == true) {
-            System.out.println("A cadeira está se movendo");
+        if (this.temRodinha) {
+            System.out.println("A cadeira está se movendo...");
         }
     }
 }
