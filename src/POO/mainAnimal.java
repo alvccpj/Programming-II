@@ -1,6 +1,6 @@
 package POO;
 
-public class Main2 {
+public class mainAnimal {
     public static void main(String[] args) {
         Animal a = new Animal("ret", "cachorro", "branca", 1.5, true);
         exibir(a);

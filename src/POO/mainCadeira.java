@@ -1,5 +1,5 @@
 package POO;
-public class Main {
+public class mainCadeira {
     public static void main(String[] args) throws Exception {
         // intanciando o objeto 'cadeira' da classe Cadeira
         Cadeira cadeira = new Cadeira("Verde", 1.5, true);
