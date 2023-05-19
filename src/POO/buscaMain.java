@@ -6,90 +6,87 @@ import java.util.Scanner;
 
 public class buscaMain {
 
-    public static void insertionSort(int[] array) {
-        int n = array.length;
-        int i = 0, j = 1, aux = 0;
+    public static void medirTempoEMemoria(Runnable runnable) {
+        Runtime runtime = Runtime.getRuntime();
 
-        while (j < n) {
-            aux = array[j];
-            i = j - 1;
+        long tempoInicial = System.currentTimeMillis();
+        long memoriaInicial = runtime.totalMemory() - runtime.freeMemory();
 
-            while ((i >= 0) && (array[i] > aux)) {
-                array[i + 1] = array[i];
-                i = i - 1;
-            }
+        runnable.run();
 
-            array[i + 1] = aux;
-            j = j + 1;
-        }
+        long tempoFinal = System.currentTimeMillis();
+        long memoriaFinal = runtime.totalMemory() - runtime.freeMemory();
 
+        long tempoExecucao = tempoFinal - tempoInicial;
+        long memoriaUtilizada = memoriaFinal - memoriaInicial;
+
+        System.out.println("Tempo de execução (ms): " + tempoExecucao);
+        System.out.println("Memória utilizada (bytes): " + memoriaUtilizada);
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Busca busca = new Busca();
-        Random random = new Random();
         Runtime runtime = Runtime.getRuntime();
 
-        int tamanhoArrayA = (int) Math.pow(10, 6);
-        int arrayA[] = new int[tamanhoArrayA];
-        int tamanhoArrayB = 5000;
-        int arrayB[] = new int[tamanhoArrayB];
-
-        for (int i = 0; i < tamanhoArrayA; i++) {
+        int arrayA[] = new int[5000];
+        for (int i = 0; i < arrayA.length - 1; i++) {
             arrayA[i] = i + 1;
         }
 
-        for (int i = 0; i < tamanhoArrayB; i++) {
+        int arrayB[] = new int[10000];
+        for (int i = 0; i < arrayB.length - 1; i++) {
             arrayB[i] = i + 1;
         }
 
-        // ordenando crescente
-        insertionSort(arrayA);
-        insertionSort(arrayB);
+        System.out.print("Digite um valor para buscar no array A: ");
+        int valorBuscaA = in.nextInt();
 
-        System.out.println("Primeiros 10 elementos do array de 1.000.000:");
-        for (int i = 0; i < 10; i++) {
-            System.out.print(arrayA[i] + " ");
-        }
+        medirTempoEMemoria(() -> {
+            int resultadoBuscaSequencialIterativaA = Busca.buscaSequencialIterativa(arrayA, valorBuscaA);
+            System.out.println(
+                    "Resultado da busca sequencial iterativa no array A: " + resultadoBuscaSequencialIterativaA);
+        });
 
-        System.out.println();
+        medirTempoEMemoria(() -> {
+            int resultadoBuscaBinariaIterativaA = Busca.buscaBinariaIterativa(arrayA, valorBuscaA);
+            System.out.println("Resultado da busca binária iterativa no array A: " + resultadoBuscaBinariaIterativaA);
+        });
 
-        System.out.print("Informe o valor que você procura: ");
-        int valor = in.nextInt();
+        medirTempoEMemoria(() -> {
+            int resultadoBuscaSequencialRecursivaA = Busca.buscaSequencialRecursiva(arrayA, valorBuscaA);
+            System.out.println(
+                    "Resultado da busca sequencial recursiva no array A: " + resultadoBuscaSequencialRecursivaA);
+        });
 
-        System.out.println("Primeiros 10 elementos do array de 5.000:");
-        for (int i = 0; i < 10; i++) {
-            System.out.print(arrayB[i] + " ");
-        }
+        medirTempoEMemoria(() -> {
+            int resultadoBuscaBináriaRecursivaA = Busca.buscaBinariaRecursiva(arrayA, valorBuscaA);
+            System.out.println("Resultado da busca binária recursiva no array A: " + resultadoBuscaBináriaRecursivaA);
+        });
 
-        System.out.println();
+        System.out.print("Digite um valor para buscar no array B: ");
+        int valorBuscaB = in.nextInt();
 
-        System.out.print("Informe o valor que você procura: ");
-        int valor2 = in.nextInt();
+        medirTempoEMemoria(() -> {
+            int resultadoBuscaSequencialIterativaB = Busca.buscaSequencialIterativa(arrayB, valorBuscaB);
+            System.out.println(
+                    "Resultado da busca sequencial iterativa no array B: " + resultadoBuscaSequencialIterativaB);
+        });
 
-        long tempoInicial = System.currentTimeMillis();
-        long memoriaInicial = runtime.totalMemory() - runtime.freeMemory();
+        medirTempoEMemoria(() -> {
+            int resultadoBuscaBinariaIterativaB = Busca.buscaSequencialIterativa(arrayB, valorBuscaB);
+            System.out.println("Resultado da busca binária iterativa no array B: " + resultadoBuscaBinariaIterativaB);
+        });
 
-        System.out.println("Busca Sequencial Iterativa de A: " + Busca.buscaSequencialIterativa(arrayA, valor));
-        System.out.println("Busca Sequencial Iterativa de B: " + Busca.buscaSequencialIterativa(arrayB, valor2));
-        System.out.println("Busca Binária Iterativa de A: " + Busca.buscaBinariaIterativa(arrayA, valor));
-        System.out.println("Busca Binária Iterativa de B: " + Busca.buscaBinariaIterativa(arrayB, valor2));
-        System.out.println("Busca Sequencial Recursiva de A: " + Busca.buscaSequencialRecursiva(arrayA, valor, 0));
-        System.out.println("Busca Sequencial Recursiva de B: " + Busca.buscaSequencialRecursiva(arrayB, valor2, 0));
-        System.out.println(
-                "Busca Binária Recursiva de A: " + Busca.buscaBinariaRecursiva(arrayA, valor, 0, arrayA.length));
-        System.out.println(
-                "Busca Binária Recursiva de B: " + Busca.buscaBinariaRecursiva(arrayB, valor2, 0, arrayB.length));
+        medirTempoEMemoria(() -> {
+            int resultadoBuscaSequencialRecursivaB = Busca.buscaSequencialRecursiva(arrayB, valorBuscaB);
+            System.out.println(
+                    "Resultado da busca sequencial recursiva no array A: " + resultadoBuscaSequencialRecursivaB);
+        });
 
-        long tempoFinal = System.currentTimeMillis();
-        long tempoTotal = tempoFinal - tempoInicial;
-        System.out.println("Tempo de execução: " + tempoTotal + " milissegundos");
-
-        long memoriaFinal = runtime.totalMemory() - runtime.freeMemory();
-        long memoryUsed = memoriaFinal - memoriaInicial;
-        System.out.println("Memória utilizada: " + memoryUsed + " bytes");
-
+        medirTempoEMemoria(() -> {
+            int resultadoBuscaBináriaRecursivaB = Busca.buscaBinariaRecursiva(arrayB, valorBuscaB);
+            System.out.println("Resultado da busca binária recursiva no array A: " + resultadoBuscaBináriaRecursivaB);
+        });
     }
-
 }

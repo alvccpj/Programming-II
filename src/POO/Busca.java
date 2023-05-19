@@ -30,31 +30,35 @@ public class Busca {
         return -1;
     }
 
-    public static int buscaSequencialRecursiva(int array[], int valor, int indice) {
-        if (array[indice] == valor) {
-            return indice;
-        } else if (indice == array.length) {
-            return -1;
-        } else {
-            return buscaSequencialRecursiva(array, valor, indice + 1);
-        }
+    public static int buscaSequencialRecursiva(int[] array, int valor) {
+        return buscaSequencialRecursivaAux(array, valor, 0);
     }
 
-    public static int buscaBinariaRecursiva(int array[], int valor, int esquerda, int direita) {
-        if (direita >= esquerda) {
-            int meio = esquerda + (direita - esquerda) / 2;
-
-            if (array[meio] == valor)
-                return meio;
-
-            // Se o elemento for menor que o valor do meio, busca na metade esquerda do
-            // array
-            else if (array[meio] > valor)
-                return buscaBinariaRecursiva(array, valor, esquerda, meio - 1);
-
-            // Caso contrário, busca na metade direita do array
-            return buscaBinariaRecursiva(array, valor, meio + 1, direita);
+    public static int buscaSequencialRecursivaAux(int[] array, int valor, int indice) {
+        if (indice >= array.length) {
+            return -1;
         }
-        return -1;
+        if (array[indice] == valor) {
+            return indice;
+        }
+        return buscaSequencialRecursivaAux(array, valor, indice + 1);
+    }
+
+    public static int buscaBinariaRecursiva(int[] array, int valor) {
+        return buscaBinariaRecursivaAux(array, valor, 0, array.length - 1);
+    }
+
+    public static int buscaBinariaRecursivaAux(int[] array, int valor, int inicio, int fim) {
+        if (inicio > fim) {
+            return -1;
+        }
+        int meio = (inicio + fim) / 2;
+        if (array[meio] == valor) {
+            return meio;
+        } else if (array[meio] < valor) {
+            return buscaBinariaRecursivaAux(array, valor, meio + 1, fim);
+        } else {
+            return buscaBinariaRecursivaAux(array, valor, inicio, meio - 1);
+        }
     }
 }
